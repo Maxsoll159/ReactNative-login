@@ -1,8 +1,8 @@
-import { Divider, Layout, TopNavigation, TopNavigationAction, Icon } from '@ui-kitten/components';
+import { Divider, Layout, TopNavigation, TopNavigationAction, Icon, Button } from '@ui-kitten/components';
 import { router, useNavigation } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MyIcon } from '../components/ui/MyIcon';
-import { View } from 'react-native';
+import {  View } from 'react-native';
 
 interface Props {
     title: string,
@@ -10,7 +10,7 @@ interface Props {
     rightAction?: () => void;
     rightaActionIcon?: string,
 
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 export const MainLayout = ({ title, subTitle, rightAction, rightaActionIcon, children }: Props) => {
@@ -18,14 +18,18 @@ export const MainLayout = ({ title, subTitle, rightAction, rightaActionIcon, chi
     const { top } = useSafeAreaInsets()
     const navigation = useNavigation()
 
+    console.log("navigation.canGoBack()", navigation.canGoBack())
+
     const renderBackAction = () => (
-        <TopNavigationAction onPress={() => router.back()} />
+        <TopNavigationAction onPress={() => router.back()} icon={<MyIcon name={"arrow-back"} />} />
     )
 
     const RenderRightAction = () => {
         if (rightAction === undefined || rightaActionIcon === undefined) return null
         return <TopNavigationAction onPress={() => router.back()} icon={<MyIcon name={rightaActionIcon} />} />
     }
+
+    console.log("renderBackAction", renderBackAction)
 
     return (
         <Layout style={{ paddingTop: top }}>
@@ -42,6 +46,9 @@ export const MainLayout = ({ title, subTitle, rightAction, rightaActionIcon, chi
             <Layout style={{ height: "100%"}}>
                 {children}
             </Layout>
+
+
+ 
 
 
         </Layout>

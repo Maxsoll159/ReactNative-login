@@ -3,7 +3,7 @@ import { tesloApi } from "../TesloApi"
 import { ResponseGetProducts } from "./products.interface"
 
 
-const tesloProduct = (product: ResponseGetProducts) =>{
+const tesloProduct = (product: ResponseGetProducts) => {
     return {
         id: product.id,
         title: product.title,
@@ -14,7 +14,7 @@ const tesloProduct = (product: ResponseGetProducts) =>{
         sizes: product.sizes,
         gender: product.gender,
         tags: product.tags,
-        images: product.images.map(image=>(`http://192.168.18.5:3000/api/files/product/${image}`))
+        images: product.images.map(image => (`http://192.168.18.5:3000/api/files/product/${image}`))
     }
 }
 
@@ -26,8 +26,22 @@ export const getProdyctsByPage = async (page: number, limit: number = 20) => {
         const products = data.map(product => tesloProduct(product))
 
         return products
-        
+
     } catch (error) {
         return null
+    }
+}
+
+
+export const getProductId = async (id: any) => {
+    try {
+        const { data } = await tesloApi.get<ResponseGetProducts>(`/products/${id}`)
+
+        return tesloProduct(data)
+
+
+    } catch (error) {
+        throw new Error("Id malo");
+
     }
 }

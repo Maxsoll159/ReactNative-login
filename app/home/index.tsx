@@ -22,14 +22,16 @@ export default function IndexScreen() {
 
     return (
         <MainLayout title="TesloShop - Products" subTitle="Aplicacion administrativa">
+            <Layout style={{ flex: 1 }}>
 
-            {
-                isLoading ? (<FullScreenLoading />) : <ProductList products={products} />
-            }
+                {
+                    isLoading ? (<FullScreenLoading />) : <ProductList products={products} />
+                }
 
-            <Button onPress={logout}>
-                Cerrar Sesion
-            </Button>
+                <Button onPress={logout}>
+                    Cerrar Sesion
+                </Button>
+            </Layout>
 
         </MainLayout>
     )

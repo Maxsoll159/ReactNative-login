@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
                 }))
             } else {
                 navigation.dispatch(CommonActions.reset({
-                    routes: [{ key: "(auth)", name: "(auth)/index" }]
+                    routes: [{ key: "(auth)", name: "(auth)/login" }]
                 }))
             }
         }

@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const unstable_settings = {
     // Ensure any route can link back to `/`
-    initialRouteName: 'loading/index',
+    initialRouteName: '(auth)/index',
 };
 
 const queryClient = new QueryClient()
@@ -35,7 +35,8 @@ export default function Layout() {
                     <Stack screenOptions={{ headerShown: false }}>
                         <Stack.Screen options={{ animation: "fade" }} name="(auth)/login" />
                         <Stack.Screen options={{ animation: "fade" }} name="(auth)/register" />
-                        <Stack.Screen options={{ animation: "fade" }} name="loading/index" />
+                        <Stack.Screen options={{ animation: "fade" }} name="home/index" />
+                        <Stack.Screen options={{ animation: "fade" }} name="product/[id]" />
                     </Stack>
                 </AuthProvider>
 

@@ -11,6 +11,7 @@ export const ProductList = ({ products }: Props) => {
         <List
             data={products}
             numColumns={2}
+            style={{flex: 1}}
             keyExtractor={item => item.id}
             renderItem={({item}) =>(
                 <ProductCard product={item} />
